@@ -20,6 +20,15 @@ export default function TabsLayout() {
           ),
         }}
       />
+            <Tabs.Screen
+        name="cuartos"
+        options={{
+          title: 'Cuartos',
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="bed" size={size} color={color} />
+          ),
+        }}
+      />
       <Tabs.Screen
         name="clan"
         options={{

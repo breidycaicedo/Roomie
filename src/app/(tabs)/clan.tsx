@@ -1,4 +1,4 @@
-import { useFocusEffect } from 'expo-router';
+import { router, useFocusEffect } from 'expo-router';
 import { useCallback, useState } from 'react';
 import {
     ActivityIndicator,
@@ -346,7 +346,14 @@ export default function MiClan() {
           )}
         </>
       )}
-
+      {isAdmin && (
+        <Pressable
+          style={styles.button}
+          onPress={() => router.push('/nuevo-cuarto')}
+        >
+          <Text style={styles.buttonText}>Publicar un cuarto</Text>
+        </Pressable>
+      )}
       <Pressable style={styles.leave} onPress={leaveClan}>
         <Text style={styles.leaveText}>Salir del clan</Text>
       </Pressable>
