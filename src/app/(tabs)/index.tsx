@@ -1,4 +1,4 @@
-import { useFocusEffect } from 'expo-router';
+import { router, useFocusEffect } from 'expo-router';
 import { useCallback, useState } from 'react';
 import {
   ActivityIndicator,
@@ -147,8 +147,11 @@ export default function Explorar() {
         ListEmptyComponent={
           <Text style={styles.empty}>No hay clanes abiertos por ahora.</Text>
         }
-        renderItem={({ item }) => (
-          <View style={styles.card}>
+                renderItem={({ item }) => (
+          <Pressable
+            style={styles.card}
+            onPress={() => router.push(('/clan-perfil/' + item.id) as any)}
+          >
             <Text style={styles.cardTitle}>{item.name}</Text>
             <Text style={styles.cardMeta}>
               {item.city ?? 'Sin ciudad'} · {item.member_count}/{item.max_members} miembros
@@ -157,7 +160,7 @@ export default function Explorar() {
               <Text style={styles.cardDesc}>{item.description}</Text>
             ) : null}
             {renderAction(item)}
-          </View>
+          </Pressable>
         )}
       />
     </View>

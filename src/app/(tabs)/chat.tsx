@@ -1,4 +1,4 @@
-import { useFocusEffect } from 'expo-router';
+import { router, useFocusEffect } from 'expo-router';
 import { useCallback, useEffect, useState } from 'react';
 import {
   ActivityIndicator,
@@ -183,6 +183,9 @@ export default function Chat() {
       keyboardVerticalOffset={Platform.OS === 'ios' ? 80 : 0}
     >
       <Text style={styles.title}>Chat del clan</Text>
+      <Pressable onPress={() => router.push('/clan-chats' as any)}>
+        <Text style={styles.link}>Chats con otros clanes →</Text>
+      </Pressable>
 
       <FlatList
         data={messages}
@@ -235,6 +238,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#000',
     padding: 24,
+    link: { color: '#3b82f6', marginTop: 4 },
   },
   title: { fontSize: 24, fontWeight: '700', color: '#fff' },
   empty: { color: '#888', textAlign: 'center', marginTop: 24 },
